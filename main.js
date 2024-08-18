@@ -24,6 +24,18 @@ const mystery6 = [9, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 2, 5, 2, 3]
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5, mystery6]
 
+// Online generated numbers
+const visa = "4024007184896511"
+const discover = "6011475246689978"
+const jcb = "3543417264692793"
+const instaPayment = "6389350484090029"
+const maestro = "6761034085490816"
+const dinersClub = "36566664444625"
+const visa2 = "424007184896511"
+
+// Array of online numbers
+
+const onlineBatch = [visa, discover, jcb, instaPayment, maestro, dinersClub, visa2]
 
 // Add your functions below:
 
@@ -96,17 +108,34 @@ const findInvalidCards = nestedarr => {
             invalidCards.push(array);
         }
     })
+    if(invalidCards.length > 0){
     console.log("The following are invalid cards:")
     console.log(invalidCards);
-     return(idInvalidCardCompanies(invalidCards));
+     return(idInvalidCardCompanies(invalidCards));}
+     else {
+        console.log("All card numbers entered are valid");
+     }
 }
 
 
- //Tests
+ //Test invalid card function on batch
+//findInvalidCards(batch);
 
-findInvalidCards(batch);
+let converted = []
+let strToNum = str => {
+    let num = []
+    for(let i = 0; str.length > i; i++){
+        let digit = parseInt(str[i]);
+        num.push(digit);
+    }
+    converted.push(num)
+}
 
+//Test if online numbers convert
+onlineBatch.forEach(strToNum);
+//console.log(converted);
+findInvalidCards(converted);
 
-
+//strToNum("4052403397277133");
 
 
